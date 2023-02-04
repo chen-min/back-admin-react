@@ -7,7 +7,7 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 export const router = [
   {
     path: "/",
-    element: <Navigate to="/welcome" />,
+    element: <Navigate to="/login" />,
   },
   {
     path: "/login",

@@ -1,5 +1,6 @@
 function Welcome() {
-  return <div>welcome</div>;
+  const login = () => {};
+  return <div onClick={login}>welcome</div>;
 }
 
 export default Welcome;
