@@ -1,16 +1,26 @@
 import "./App.less";
 import router from "./router";
-import { App as AntdApp } from "antd";
+import { ConfigProvider, App as AntdApp, theme } from "antd";
 
 import AntdMessage from "./utils/Message";
 
 import { RouterProvider } from "react-router-dom";
 function App() {
   return (
-    <AntdApp>
-      <AntdMessage />
-      <RouterProvider router={router} />
-    </AntdApp>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#2254a4",
+        },
+        algorithm: theme.darkAlgorithm,
+        // theme.defaultAlgorithm,
+      }}
+    >
+      <AntdApp>
+        <AntdMessage />
+        <RouterProvider router={router} />
+      </AntdApp>
+    </ConfigProvider>
   );
 }
 
