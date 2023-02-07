@@ -12,8 +12,8 @@ function App() {
         token: {
           colorPrimary: "#2254a4",
         },
-        algorithm: theme.darkAlgorithm,
-        // theme.defaultAlgorithm,
+        // algorithm: theme.darkAlgorithm,
+        algorithm: theme.defaultAlgorithm,
       }}
     >
       <AntdApp>

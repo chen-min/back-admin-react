@@ -3,3 +3,10 @@ export interface Result<T = any> {
   data: T;
   msg: string;
 }
+
+export namespace Login {
+  export interface params {
+    userName: string;
+    userPwd: string;
+  }
+}
