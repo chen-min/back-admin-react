@@ -5,6 +5,30 @@ import P404 from "@/views/404/404";
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import Layout from "@/components/Layout";
 import AuthLoader from "./authLoader";
+import { Spin } from "antd";
+import React, { Suspense, ReactNode } from "react";
+const lazyLoad = (
+  Component: React.LazyExoticComponent<() => JSX.Element>
+): ReactNode => {
+  return (
+    <Suspense
+      fallback={
+        <Spin
+          size="large"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+          }}
+        />
+      }
+    >
+      <Component />
+    </Suspense>
+  );
+};
+
 export const router = [
   {
     path: "/",
@@ -22,6 +46,10 @@ export const router = [
       {
         path: "/welcome",
         element: <Welcome />,
+      },
+      {
+        path: "/dashboard",
+        element: lazyLoad(React.lazy(() => import("@/views/dashboard"))),
       },
     ],
   },

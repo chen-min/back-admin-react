@@ -43,3 +43,16 @@ export const findBreadCrumb = (
   }
   return [];
 };
+
+export const formatState = (state: number) => {
+  if (state === 1) return "在职";
+  if (state === 2) return "试用期";
+  if (state === 3) return "离职";
+};
+
+export const formatNum = (num?: number | string) => {
+  if (!num) return 0;
+  const a = num.toString();
+  if (a.indexOf(".") > -1) return a.replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+  return a.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+};
