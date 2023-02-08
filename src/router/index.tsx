@@ -3,19 +3,25 @@ import Welcome from "@/views/welcome/Welcome";
 import P403 from "@/views/403/403";
 import P404 from "@/views/404/404";
 import { Navigate, createBrowserRouter } from "react-router-dom";
-
+import Layout from "@/components/Layout";
 export const router = [
   {
     path: "/",
-    element: <Navigate to="/Login" />,
+    element: <Navigate to="/welcome" />,
   },
   {
     path: "/login",
     element: <Login />,
   },
   {
-    path: "/welcome",
-    element: <Welcome />,
+    id: "layout",
+    element: <Layout />,
+    children: [
+      {
+        path: "/welcome",
+        element: <Welcome />,
+      },
+    ],
   },
   {
     path: "*",
