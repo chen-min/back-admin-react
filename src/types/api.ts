@@ -11,6 +11,15 @@ export namespace Login {
   }
 }
 
+export interface ResultData<T = any> {
+  list: T[];
+  page: {
+    pageNum: number;
+    pageSize: number;
+    total: number | 0;
+  };
+}
+
 export interface PageParams {
   pageNum: number;
   pageSize?: number;
@@ -27,7 +36,6 @@ export namespace Menu {
     path?: string;
     component?: string;
   }
-
   export interface MenuItem extends CreateParams {
     _id: string;
     createTime: string;
@@ -37,6 +45,16 @@ export namespace Menu {
 }
 
 export namespace User {
+  export interface Params extends PageParams {
+    userId?: number;
+    userName?: string;
+    state?: number;
+  }
+  export interface SearchParams {
+    userId?: number;
+    userName?: string;
+    state?: number;
+  }
   export interface UserItem {
     _id: string;
     userId: number;
@@ -51,6 +69,19 @@ export namespace User {
     createId: number;
     deptName: string;
     userImg: string;
+  }
+  export interface CreateParams {
+    userName: string;
+    userEmail: string;
+    mobile?: number;
+    deptId: string;
+    job?: string;
+    state?: number;
+    roleList: string[];
+    userImg: string;
+  }
+  export interface EditParams extends CreateParams {
+    userId: number;
   }
 }
 
@@ -75,6 +106,61 @@ export namespace Dashboard {
     data: {
       name: string;
       value: number[];
+    };
+  }
+}
+
+export namespace Dept {
+  export interface Params {
+    deptName?: string;
+  }
+  export interface CreateParams {
+    deptName: string;
+    parentId?: string;
+    userName: string;
+  }
+  export interface EditParams extends CreateParams {
+    _id: string;
+  }
+  export interface DelParams {
+    _id: string;
+  }
+  export interface DeptItem {
+    _id: string;
+    createTime: string;
+    updateTime: string;
+    deptName: string;
+    parentId: string;
+    userName: string;
+    children: DeptItem[];
+  }
+}
+
+export namespace Role {
+  export interface Params extends PageParams {
+    roleName?: string;
+  }
+  export interface CreateParams {
+    roleName: string;
+    remark?: string;
+  }
+  export interface RoleItem extends CreateParams {
+    _id: string;
+    permissionList: {
+      checkedKeys: string[];
+      halfCheckedKeys: string[];
+    };
+    updateTime: string;
+    createTime: string;
+  }
+  export interface EditParams extends CreateParams {
+    _id: string;
+  }
+  export interface Permission {
+    _id: string;
+    permissionList: {
+      checkedKeys: string[];
+      halfCheckedKeys: string[];
     };
   }
 }
