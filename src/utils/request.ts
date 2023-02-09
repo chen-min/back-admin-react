@@ -34,7 +34,7 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   (res) => {
     const data: Result = res.data;
-    // hideLoading();
+    hideLoading();
     if (res.config.responseType === "blob") return res;
     if (data.code === 500001) {
       message.error(data.msg);

@@ -1,61 +1,28 @@
-import React, { useState } from "react";
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Layout, Menu, Button, theme } from "antd";
+import React, { useEffect, useState } from "react";
+import { Layout, theme } from "antd";
 import { Outlet } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 import styles from "./index.module.less";
-
+import SideMenu from "./SideMenu";
+import Navbar from "./Navbar";
+import { useStore } from "@/store";
+import api from "@/api";
 const App: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-
+  const { collapsed, changeCollapsed, changeUserInfo } = useStore();
+  useEffect(() => {
+    getUserMethod();
+  }, []);
+  const getUserMethod = async () => {
+    const data = await api.getUserInfo();
+    changeUserInfo(data);
+  };
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          items={[
-            {
-              key: "1",
-              icon: <UserOutlined />,
-              label: "nav 1",
-            },
-            {
-              key: "2",
-              icon: <VideoCameraOutlined />,
-              label: "nav 2",
-            },
-            {
-              key: "3",
-              icon: <UploadOutlined />,
-              label: "nav 3",
-            },
-          ]}
-        />
+        <SideMenu />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-            }}
-          />
-        </Header>
+        <Navbar></Navbar>
         <div className={styles.content}>
           <div className={styles.wrapper}>
             <Outlet></Outlet>
