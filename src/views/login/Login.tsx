@@ -30,7 +30,7 @@ export default function LoginFC() {
         <div className={styles.title}>SYSTEM LOGIN</div>
         <Form
           name="basic"
-          initialValues={{ remember: true }}
+          initialValues={{ userName: 475721797, userPwd: 123456 }}
           onFinish={onFinish}
           autoComplete="off"
           size="large"

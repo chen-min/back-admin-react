@@ -1,5 +1,5 @@
 import request from "@/utils/request";
-import { User, Menu, Dashboard, ResultData } from "@/types/api";
+import { User, Menu, Dashboard, ResultData, Dept } from "@/types/api";
 
 export default {
   login(params: any) {
@@ -53,4 +53,18 @@ export default {
   getDeptList(params?: Dept.Params) {
     return request.get<Dept.DeptItem[]>("/dept/list", params);
   },
+  // 菜单部分
+  getMenuList(params?: Menu.Params) {
+    return request.get<Menu.MenuItem[]>('/menu/list', params)
+  },
+  createMenu(params: Menu.CreateParams) {
+    return request.post('/menu/create', params)
+  },
+  editMenu(params: Menu.EditParams) {
+    return request.post('/menu/edit', params)
+  },
+  deleteMenu(params: Menu.DelParams) {
+    return request.post('/menu/delete', params)
+  }
+
 };

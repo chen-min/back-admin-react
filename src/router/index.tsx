@@ -55,6 +55,10 @@ export const router = [
         path: "/userList",
         element: lazyLoad(React.lazy(() => import("@/views/userList"))),
       },
+      {
+        path: "/menuList",
+        element: lazyLoad(React.lazy(() => import("@/views/menuList"))),
+      },
     ],
   },
   {

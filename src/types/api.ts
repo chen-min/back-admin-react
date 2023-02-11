@@ -36,11 +36,22 @@ export namespace Menu {
     path?: string;
     component?: string;
   }
+  export interface Params {
+    menuName: string;
+    menuState: number;
+  }
   export interface MenuItem extends CreateParams {
     _id: string;
     createTime: string;
     buttons?: MenuItem[];
     children?: MenuItem[];
+  }
+  export interface EditParams extends CreateParams {
+    _id?: string;
+  }
+
+  export interface DelParams {
+    _id: string;
   }
 }
 
