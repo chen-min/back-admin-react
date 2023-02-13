@@ -141,9 +141,6 @@ export default function UserList() {
     userRef.current?.open("edit", record);
   };
 
-  setTimeout(() => {
-    console.log(tableProps, search, "getadata=-");
-  }, 5000);
   return (
     <div>
       <SearchForm

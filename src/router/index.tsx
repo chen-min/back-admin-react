@@ -59,6 +59,10 @@ export const router = [
         path: "/menuList",
         element: lazyLoad(React.lazy(() => import("@/views/menuList"))),
       },
+      {
+        path: "/roleList",
+        element: lazyLoad(React.lazy(() => import("@/views/roleList"))),
+      },
     ],
   },
   {

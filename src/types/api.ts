@@ -161,8 +161,8 @@ export namespace Role {
       checkedKeys: string[];
       halfCheckedKeys: string[];
     };
-    updateTime: string;
-    createTime: string;
+    updateTime: Date;
+    createTime: Date;
   }
   export interface EditParams extends CreateParams {
     _id: string;
