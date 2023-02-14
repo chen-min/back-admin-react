@@ -55,16 +55,29 @@ export default {
   },
   // 菜单部分
   getMenuList(params?: Menu.Params) {
-    return request.get<Menu.MenuItem[]>('/menu/list', params)
+    return request.get<Menu.MenuItem[]>("/menu/list", params);
   },
   createMenu(params: Menu.CreateParams) {
-    return request.post('/menu/create', params)
+    return request.post("/menu/create", params);
   },
   editMenu(params: Menu.EditParams) {
-    return request.post('/menu/edit', params)
+    return request.post("/menu/edit", params);
   },
   deleteMenu(params: Menu.DelParams) {
-    return request.post('/menu/delete', params)
-  }
-
+    return request.post("/menu/delete", params);
+  },
+  createDept(params: Dept.CreateParams) {
+    return request.post("/dept/create", params);
+  },
+  // 修改部门
+  eidtDept(params: Dept.EditParams) {
+    return request.post("/dept/edit", params);
+  },
+  // 删除部门
+  deleteDept(params: Dept.DelParams) {
+    return request.post("/dept/delete", params);
+  },
+  getAllUserList() {
+    return request.get<User.UserItem[]>("/users/all/list");
+  },
 };
