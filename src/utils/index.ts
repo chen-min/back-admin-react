@@ -56,3 +56,14 @@ export const formatNum = (num?: number | string) => {
   if (a.indexOf(".") > -1) return a.replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
   return a.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 };
+
+export const searchRoute: any = (path: string, routes: any = []) => {
+  for (const item of routes) {
+    if (item.path === path) return item;
+    if (item.children) {
+      const result = searchRoute(path, item.children);
+      if (result) return result;
+    }
+  }
+  return "";
+};
