@@ -822,8 +822,8 @@ export default async function AuthLoader() {
   // };
   const menuPathList = getMenuPath(tempData.menuList);
   return {
-    buttonList: data.buttonList,
-    menuList: data.menuList,
+    buttonList: tempData.buttonList,
+    menuList: tempData.menuList,
     menuPathList,
   };
 }
