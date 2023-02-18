@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useAntdTable } from "ahooks";
 import { Button, Table, Form, Input, Select, Space, Modal } from "antd";
-import api from "@/api/roleApi";
+import api from "@/api";
 import type { ColumnsType } from "antd/es/table";
 import { formatDate } from "@/utils";
 import SearchForm from "@/components/SearchForm";

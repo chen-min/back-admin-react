@@ -2,7 +2,7 @@ import { Role } from "@/types/api";
 import { IAction, IModalProp } from "@/types/modal";
 import { Modal, Form, Input } from "antd";
 import { useImperativeHandle, useState } from "react";
-import api from "@/api/roleApi";
+import api from "@/api/";
 import { message } from "@/utils/Message";
 export default function CreateRole(props: IModalProp<Role.RoleItem>) {
   const [visible, setVisible] = useState(false);

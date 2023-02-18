@@ -8,10 +8,13 @@ import { formatDate, formatMoney } from "@/utils";
 import Column from "antd/es/table/Column";
 import OrderModal from "./orderModal";
 import { message } from "@/utils/Message";
+import DetailModal from "./detailModal";
 
 export default function OrderList() {
   const [form] = Form.useForm();
-  const orderRef = useRef<{ open: () => void }>();
+  const orderRef = useRef<{ open: (orderId: string) => void }>();
+  const detailRef = useRef<{ open: () => void }>();
+
   const getData = (
     { current, pageSize }: { current: number; pageSize: number },
     formData: Order.SearchParams
@@ -47,6 +50,12 @@ export default function OrderList() {
       },
     });
   };
+  const handleDetail = (orderId: string) => {
+    detailRef.current?.open(orderId);
+  };
+  const handleMarker = () => {};
+  const handleRoute = () => {};
+
   const columns: ColumnsType<Order.OrderItem> = [
     {
       title: "订单编号",
@@ -117,6 +126,16 @@ export default function OrderList() {
       render(_, record) {
         return (
           <Space>
+            <Button type="text" onClick={() => handleDetail(record.orderId)}>
+              详情
+            </Button>
+            <Button type="text" onClick={() => handleMarker(record.orderId)}>
+              打点
+            </Button>
+            <Button type="text" onClick={() => handleRoute(record.orderId)}>
+              轨迹
+            </Button>
+
             <Button type="text" danger onClick={() => handleDel(record._id)}>
               删除
             </Button>
@@ -167,6 +186,7 @@ export default function OrderList() {
         <Table bordered rowKey="_id" columns={columns} {...tableProps} />
       </div>
       <OrderModal mRef={orderRef} update={search.submit} />
+      <DetailModal mRef={detailRef} />
     </div>
   );
 }

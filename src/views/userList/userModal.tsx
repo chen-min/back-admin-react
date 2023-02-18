@@ -8,7 +8,6 @@ import type { RcFile, UploadFile, UploadProps } from "antd/es/upload/interface";
 import { IAction, IModalProp } from "@/types/modal";
 import { Dept, Role, User } from "@/types/api";
 import api from "@/api";
-import roleApi from "@/api/roleApi";
 
 export default function userModal(props: any) {
   const [visible, setVisible] = useState(false);
@@ -29,7 +28,7 @@ export default function userModal(props: any) {
 
   // 获取角色列表
   const getRoleList = async () => {
-    const list = await roleApi.getAllRoleList();
+    const list = await api.getAllRoleList();
     setRoleList(list);
   };
 

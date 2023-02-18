@@ -3,7 +3,6 @@ import { IAction, IModalProp } from "@/types/modal";
 import { Modal, Form, Tree } from "antd";
 import { useEffect, useImperativeHandle, useState } from "react";
 import api from "@/api/index";
-import roleAPi from "@/api/roleApi";
 import { message } from "@/utils/Message";
 export default function SetPermission(props: IModalProp<Role.RoleItem>) {
   const [visible, setVisible] = useState(false);
@@ -56,7 +55,7 @@ export default function SetPermission(props: IModalProp<Role.RoleItem>) {
 
   const handleOk = async () => {
     if (permission) {
-      await roleAPi.updatePermission(permission);
+      await api.updatePermission(permission);
       message.success("权限设置成功");
       handleCancel();
       props.update();
