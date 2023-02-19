@@ -194,12 +194,12 @@ export default function CreateOrder(props: IModalProp) {
         <Row>
           <Col span={12}>
             <Form.Item name="useTime" label="用车时间">
-              <DatePicker placeholder="请选择用车时间" />
+              <DatePicker placeholder="请选择城市名称" />
             </Form.Item>
           </Col>
           <Col span={12}>
             <Form.Item name="endTime" label="结束时间">
-              <DatePicker placeholder="请选择结束时间" />
+              <DatePicker placeholder="请选择城市名称" />
             </Form.Item>
           </Col>
         </Row>

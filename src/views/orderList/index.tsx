@@ -9,11 +9,12 @@ import Column from "antd/es/table/Column";
 import OrderModal from "./orderModal";
 import { message } from "@/utils/Message";
 import DetailModal from "./detailModal";
-
+import MarkerModal from "./markerModal";
 export default function OrderList() {
   const [form] = Form.useForm();
-  const orderRef = useRef<{ open: (orderId: string) => void }>();
-  const detailRef = useRef<{ open: () => void }>();
+  const orderRef = useRef<{ open: () => void }>();
+  const detailRef = useRef<{ open: (orderId: string) => void }>();
+  const markerRef = useRef<{ open: (orderId: string) => void }>();
 
   const getData = (
     { current, pageSize }: { current: number; pageSize: number },
@@ -53,7 +54,9 @@ export default function OrderList() {
   const handleDetail = (orderId: string) => {
     detailRef.current?.open(orderId);
   };
-  const handleMarker = () => {};
+  const handleMarker = (orderId: string) => {
+    markerRef.current?.open(orderId);
+  };
   const handleRoute = () => {};
 
   const columns: ColumnsType<Order.OrderItem> = [
@@ -187,6 +190,7 @@ export default function OrderList() {
       </div>
       <OrderModal mRef={orderRef} update={search.submit} />
       <DetailModal mRef={detailRef} />
+      <MarkerModal mRef={markerRef} />
     </div>
   );
 }
