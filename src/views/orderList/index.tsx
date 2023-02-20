@@ -10,11 +10,14 @@ import OrderModal from "./orderModal";
 import { message } from "@/utils/Message";
 import DetailModal from "./detailModal";
 import MarkerModal from "./markerModal";
+import RouteModal from "./routeModal";
+
 export default function OrderList() {
   const [form] = Form.useForm();
   const orderRef = useRef<{ open: () => void }>();
   const detailRef = useRef<{ open: (orderId: string) => void }>();
   const markerRef = useRef<{ open: (orderId: string) => void }>();
+  const routeRef = useRef<{ open: (orderId: string) => void }>();
 
   const getData = (
     { current, pageSize }: { current: number; pageSize: number },
@@ -57,7 +60,9 @@ export default function OrderList() {
   const handleMarker = (orderId: string) => {
     markerRef.current?.open(orderId);
   };
-  const handleRoute = () => {};
+  const handleRoute = (orderId: string) => {
+    routeRef.current?.open(orderId);
+  };
 
   const columns: ColumnsType<Order.OrderItem> = [
     {
@@ -191,6 +196,7 @@ export default function OrderList() {
       <OrderModal mRef={orderRef} update={search.submit} />
       <DetailModal mRef={detailRef} />
       <MarkerModal mRef={markerRef} />
+      <RouteModal mRef={routeRef} />
     </div>
   );
 }
