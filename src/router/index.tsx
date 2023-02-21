@@ -71,6 +71,10 @@ export const router = [
         path: "/orderList",
         element: lazyLoad(React.lazy(() => import("@/views/orderList"))),
       },
+      {
+        path: "/cluster",
+        element: lazyLoad(React.lazy(() => import("@/views/orderCluster"))),
+      },
     ],
   },
   {
