@@ -76,7 +76,13 @@ export default function SideMenu() {
   return (
     <div>
       <div className={styles.title}>BACK-ADMIN</div>
-      <Menu theme="dark" mode="inline" onClick={handleClick} items={menuList} />
+      <Menu
+        theme="dark"
+        mode="inline"
+        selectedKeys={selectedKeys}
+        onClick={handleClick}
+        items={menuList}
+      />
     </div>
   );
 }

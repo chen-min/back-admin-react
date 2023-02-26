@@ -75,6 +75,10 @@ export const router = [
         path: "/cluster",
         element: lazyLoad(React.lazy(() => import("@/views/orderCluster"))),
       },
+      {
+        path: "/driverList",
+        element: lazyLoad(React.lazy(() => import("@/views/driverList"))),
+      },
     ],
   },
   {
